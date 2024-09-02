@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p05eIOGj+p+Q/pPWo+xnUmJ+K75svsMBObtwyNNkvng4qU38QqXb6CTS37DACUeSlGVRKWQAdbkwF1cCfuVFeA==",
+  "dgSpecHash": "vbtP6B0aNDc5r4brQLp5f8LEgfFZU8FK9fRh6oCYNszJCPW42feq46xfaMxlSNk9HVDqmR2cEqMgZclI8fuYPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\MyLoLClipperAPI.csproj",
+  "projectFilePath": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper-project\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\MyLoLClipperAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tranj\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.8\\microsoft.aspnetcore.jsonpatch.8.0.8.nupkg.sha512",
     "C:\\Users\\tranj\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.8\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.8.nupkg.sha512",

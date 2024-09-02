@@ -664,11 +664,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\MyLoLClipperAPI.csproj",
+      "projectUniqueName": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper-project\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\MyLoLClipperAPI.csproj",
       "projectName": "MyLoLClipperAPI",
-      "projectPath": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\MyLoLClipperAPI.csproj",
+      "projectPath": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper-project\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\MyLoLClipperAPI.csproj",
       "packagesPath": "C:\\Users\\tranj\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\obj\\",
+      "outputPath": "C:\\Users\\tranj\\Desktop\\Github\\my-lol-clipper-project\\api\\MyLoLClipperAPI\\MyLoLClipperAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tranj\\AppData\\Roaming\\NuGet\\NuGet.Config",
