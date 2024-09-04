@@ -14,7 +14,6 @@ namespace MyLoLClipperAPI.Controllers
     {
         private IConfiguration _configuration;
         private string gApikey;
-        private string gBaseUrl = "https://americas.api.riotgames.com/";
 
         public MyLoLClipperAPIController(IConfiguration pConfiguration)
         {
@@ -34,36 +33,22 @@ namespace MyLoLClipperAPI.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("GetAccount")]
-        public Account? GetAccount(string pGameName, string pTagLine)
+        private Task<string> GetAPICall(string pUrl)
         {
-            string url = String.Format(gBaseUrl + "riot/account/v1/accounts/by-riot-id/{0}/{1}", pGameName, pTagLine);
-
             try
             {
                 using (var client = new HttpClient())
                 {
                     HttpRequestMessage request = new HttpRequestMessage();
-                    request.RequestUri = new Uri(url);
+                    request.RequestUri = new Uri(pUrl);
                     request.Method = HttpMethod.Get;
                     request.Headers.Add("X-Riot-Token", gApikey);
                     HttpResponseMessage response = client.Send(request);
-                    var responseString =  response.Content.ReadAsStringAsync();
-                    var statusCode = response.StatusCode;
+                    var responseString = response.Content.ReadAsStringAsync();
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Account? account = JsonConvert.DeserializeObject<Account>(responseString.Result);
-
-                        if (account != null)
-                        {
-                            return account;
-                        }
-                        else
-                        {
-                            return null;
-                        }
+                        return responseString;
                     }
                     else
                     {
@@ -74,6 +59,67 @@ namespace MyLoLClipperAPI.Controllers
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAccount")]
+        public Account? GetAccount(string pGameName, string pTagLine)
+        {
+            string url = String.Format("https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{0}/{1}", pGameName, pTagLine);
+            var responseTask = GetAPICall(url);
+
+            if (responseTask != null)
+            {
+                Account? account = JsonConvert.DeserializeObject<Account>(responseTask.Result);
+
+                if (account != null)
+                {
+                    return account;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        [HttpGet]
+        [Route("GetSummoner")]
+        public Summoner? GetSummoner(string pGameName, string pTagLine)
+        {
+            Account? account = GetAccount(pGameName, pTagLine);
+
+            if (account != null)
+            {
+                string url = String.Format("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{0}", account.Puuid);
+                var responseTask = GetAPICall(url);
+
+                if (responseTask != null) 
+                {
+                    Summoner? summoner = JsonConvert.DeserializeObject<Summoner>(responseTask.Result);
+
+                    if (summoner != null)
+                    {
+                        return summoner;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                } 
+            }
+            else
+            {
+                return null;
             }
         }
     }
