@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyLoLClipperAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70647e8d5bdec569e21bca2fc85b1b88f3867f10")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8f31d389c001f1df2642481704882f07c038cf0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyLoLClipperAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyLoLClipperAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

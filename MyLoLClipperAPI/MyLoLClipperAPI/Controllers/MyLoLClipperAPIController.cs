@@ -5,6 +5,7 @@ using System.Text;
 using System;
 using Newtonsoft.Json;
 using MyLoLClipperAPI.DataObjects;
+using System.Security.Principal;
 
 namespace MyLoLClipperAPI.Controllers
 {
@@ -90,37 +91,48 @@ namespace MyLoLClipperAPI.Controllers
 
         [HttpGet]
         [Route("GetSummoner")]
-        public Summoner? GetSummoner(string pGameName, string pTagLine)
+        public Summoner? GetSummoner(string pPuuid)
         {
-            Account? account = GetAccount(pGameName, pTagLine);
+            string url = String.Format("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{0}", pPuuid);
+            var responseTask = GetAPICall(url);
 
-            if (account != null)
+            if (responseTask != null)
             {
-                string url = String.Format("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{0}", account.Puuid);
-                var responseTask = GetAPICall(url);
+                Summoner? summoner = JsonConvert.DeserializeObject<Summoner>(responseTask.Result);
 
-                if (responseTask != null) 
+                if (summoner != null)
                 {
-                    Summoner? summoner = JsonConvert.DeserializeObject<Summoner>(responseTask.Result);
-
-                    if (summoner != null)
-                    {
-                        return summoner;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                    return summoner;
                 }
                 else
                 {
                     return null;
-                } 
+                }
             }
             else
             {
                 return null;
             }
+        }
+
+
+        [HttpGet]
+        [Route("GetMatchIds")]
+        public List<string> GetMatchIds(string pPuuid, int pStart, int pCount)
+        {
+            List<string> matchIds = new List<string>();
+
+            string url = String.Format("https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{0}/ids?start={1}&count={2}", pPuuid, pStart, pCount);
+
+        //https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/Z1INT7tiCIlYipMB_dXsSGwOwTRz5OMdw7bIXvD87iV423FW0CyPR7LHZxQOr0HmDhH9YLEhwbdQZw
+            var responseTask = GetAPICall(url);
+
+            if (responseTask != null)
+            {
+                matchIds = JsonConvert.DeserializeObject<List<string>>(responseTask.Result);
+            }
+
+            return matchIds;
         }
     }
 }
