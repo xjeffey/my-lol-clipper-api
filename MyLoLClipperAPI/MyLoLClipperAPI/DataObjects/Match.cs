@@ -57,8 +57,8 @@ namespace MyLoLClipperAPI.DataObjects
             [JsonProperty("mapId")]
             public int MapId { get; set; }
 
-            [JsonProperty("participants")]
-            public List<ParticipantsDto> Participants { get; set; }
+            //[JsonProperty("participants")]
+            //public List<ParticipantsDto> Participants { get; set; }
 
             [JsonProperty("platformId")]
             public string PlatformId { get; set; }
